@@ -1366,7 +1366,7 @@ char **template_new(char *file_name) {
   while (fgets(line, sizeof(line), file)) {
     if (strcmp(line, "<!-- TEMPLATE -->\n") == 0) {
       i++;
-      out[i] = malloc(1);
+      out[i] = malloc(500);
     } else {
       strcat(out[i], line);
     }
