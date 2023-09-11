@@ -1,5 +1,5 @@
 #define HTTPSERVER_IMPL
-#include "httpserver.h"
+#include "../httpserver.h"
 
 /* TEMPLATES */
 char **base_template;
