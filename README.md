@@ -7,7 +7,7 @@ Based on https://github.com/jeremycw/httpserver.h
 
 ```c
 #define HTTPSERVER_IMPL
-#include "httpserver.h"
+#include "cmicroweb.h"
 
 struct http_response_s* hello_world() {
     struct http_response_s* response = http_response_init();

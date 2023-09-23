@@ -1,5 +1,5 @@
 #define HTTPSERVER_IMPL
-#include "../httpserver.h"
+#include "../cmicroweb.h"
 
 /* TEMPLATES */
 char **base_template;
@@ -26,7 +26,7 @@ struct http_response_s* foo() {
     struct http_response_s* response = http_response_init();
     http_response_status(response, 200);
     http_response_header(response, "Content-Type", "text/html");
-    char *context[] = {"<style>body{background-color: red;}</style>", foo_template[0], NULL};
+    char *context[] = {"<style>body{color: blue;}</style>", foo_template[0], NULL};
     char *text = template_render(base_template, context);
     http_response_body(response, text, strlen(text));
     return response;
