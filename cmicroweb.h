@@ -186,6 +186,9 @@ char **template_new(char *file_name);
 // FIXME: added by me
 char *template_render(char **template_instance, char **context);
 
+// FIXME: added by me
+void trim_querystring(char* s);
+
 // Returns the query string of the full request target as it was read from
 // the HTTP request line. Returns an empty string if there's no query
 // string.
@@ -1338,6 +1341,8 @@ char *http_request_path(http_request_t* request) {
   path.buf = target.buf;
   path.len = q - target.buf;
   char *url = strtok(path.buf, " ");
+  // auto trim query strings from the url (get it by using http_request_querystring(request) in the handler function)
+  trim_querystring(url);
   return url;
 }
 
@@ -1410,6 +1415,10 @@ char *template_render(char **template_instance, char **context) {
   strcat(render, template_instance[i]);
 
   return render;
+}
+
+void trim_querystring(char* s) {
+    strtok(s, "?");
 }
 
 http_string_t http_request_querystring(http_request_t* request) {
